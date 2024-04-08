@@ -42,13 +42,13 @@ pip install -r requirements.txt
   ```shell
   dataset/
   	└── DIOR/
-          ├── annotations_json_split1.json
-          ├── annotations_json_split2.json
-          └── JPEGImages
-                ├── 00001.jpg
-                ├── 00002.jpg
-                ├── ...
-                └── 23463.jpg
+            ├── annotations_json_split1.json
+            ├── annotations_json_split2.json
+            └── JPEGImages
+                  ├── 00001.jpg
+                  ├── 00002.jpg
+                  ├── ...
+                  └── 23463.jpg
   ```
   - `JPEGImages` represents all images in DIOR dataset
   - Annotations for split1 and split2 are already included in the repo.
