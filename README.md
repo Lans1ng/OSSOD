@@ -87,7 +87,7 @@ python train.py --config configs/baseline/baseline_ssod_split1.py --work-dir wor
   ```
 
     
-  - Train detectors with ID, mixed and out-of-distribution(OOD) unlabeled data
+  - Train detectors with ID, mixed and out-of-distribution (OOD) unlabeled data
   ```bash
   #unbiased teacher
   python train.py --config configs/unbiased_teacher/split1/unbiased_teacher_id_mix_ood.py --work-dir work_dirs/split1/unbiased_teacher_ID_MIX_OOD 
