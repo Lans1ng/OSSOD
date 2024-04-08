@@ -45,7 +45,7 @@ pip install -r requirements.txt
   │   ├── annotations_json_split1.json
   │   ├── annotations_json_split2.json
   │   ├── JPEGImages
-  │   │   ├── 00002.jpg
+  │   │   ├── 00001.jpg
   │   │   ├── 00002.jpg
   │   │   ├── ...
   │   │   ├── 23463.jpg
