@@ -1,0 +1,1 @@
+from .convfc_bbox_head_base import Shared2FCBBoxHeadBase
