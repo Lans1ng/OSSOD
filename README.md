@@ -41,7 +41,7 @@ pip install -r requirements.txt
 
   ```shell
   dataset/
-  	└── DIOR/
+  └── DIOR/
             ├── annotations_json_split1.json
             ├── annotations_json_split2.json
             └── JPEGImages
