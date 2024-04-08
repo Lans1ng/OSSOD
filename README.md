@@ -15,7 +15,7 @@ Semi-supervised object detection (SSOD) assumes that both labeled and unlabeled 
   <img width="600" src="resources/ossod.png"/>
 </div>
 
-Overview of the proposed open-set semi-supervised object detection framework.
+Overview of the proposed open-set semi-supervised object detection (OSSOD) framework. 
 
 
 ## 🎮 Getting Started
@@ -77,7 +77,7 @@ python train.py --config configs/baseline/baseline_ssod_split1.py --work-dir wor
   python train.py --config configs/unbiased_teacher/split1/unbiased_teacher_ossod_id.py --work-dir work_dirs/split1/unbiased_teacher_ossod_ID
   ```
 
-  - Train detectors with ID, mixed and out-of-distribution(OOD) unlabeled data
+  - Train detectors with ID and mixed unlabeled data
   ```bash
   #unbiased teacher
   python train.py --config configs/unbiased_teacher/split1/unbiased_teacher_id_mix.py --work-dir work_dirs/split1/unbiased_teacher_ID_MIX 
@@ -86,7 +86,8 @@ python train.py --config configs/baseline/baseline_ssod_split1.py --work-dir wor
   python train.py --config configs/unbiased_teacher/split1/unbiased_teacher_ossod_id_mix.py --work-dir work_dirs/split1/unbiased_teacher_ossod_ID_MIX
   ```
 
-    - Train detectors with ID and mixed unlabeled data
+    
+  - Train detectors with ID, mixed and out-of-distribution(OOD) unlabeled data
   ```bash
   #unbiased teacher
   python train.py --config configs/unbiased_teacher/split1/unbiased_teacher_id_mix_ood.py --work-dir work_dirs/split1/unbiased_teacher_ID_MIX_OOD 
@@ -117,10 +118,10 @@ The content of this project itself is licensed under [LICENSE](LICENSE). -->
 If you find this project useful in your research, please consider cite:
 
 ```BibTeX
-@article{liu2023semi,
+@article{liu2024semi,
   title={Semi-Supervised Object Detection with Uncurated Unlabeled Data for Remote Sensing Images},
-  author={Liu, Nanqing and Xu, Xun and Gao, Yingjie and Li, Heng-Chao},
-  journal={arXiv preprint arXiv:2310.05498},
-  year={2023}
+  author={Liu, Nanqing and Xu, Xun and Gao, Yingjie and Zhao, Yitao and Li, Heng-Chao},
+  journal={International Journal of Applied Earth Observation and Geoinformation},
+  year={2024}
 }
 ```
