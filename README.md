@@ -12,7 +12,7 @@ Semi-supervised object detection (SSOD) assumes that both labeled and unlabeled 
 ## 📻 Overview
 
 <div align="center">
-  <img width="600" src="resources/ossod.png"/>
+  <img width="700" src="resources/ossod.png"/>
 </div>
 
 Overview of the proposed open-set semi-supervised object detection (OSSOD) framework. 
