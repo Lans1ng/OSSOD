@@ -1,0 +1,13 @@
+pytest-runner
+mmcv-full==1.2.7
+mmdet==2.10.0
+opencv-python==4.6.0.66
+tqdm
+albumentations
+pympler
+timm
+dataclasses
+seaborn
+imgaug
+numpy==1.23.5
+yapf==0.40.1
