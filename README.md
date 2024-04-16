@@ -1,6 +1,10 @@
 # Semi-Supervised Object Detection with Uncurated Unlabeled Data for Remote Sensing Images
 
-## 🚀 Introduction
+## 💥 News
+
+The paper is accepted by International Journal of Applied Earth Observation and Geoinformation (JAG) and is accessible [here](https://www.sciencedirect.com/science/article/pii/S1569843224001687).
+
+## 📖 Introduction
 
 <div align="center">
   <img width="400" src="resources/introduction.png"/>
@@ -9,13 +13,13 @@
 Semi-supervised object detection (SSOD) assumes that both labeled and unlabeled data originate from the same label space, constituting in-distribution (ID) samples. Open-set semi-supervised object detection (OSSOD) accommodates the existence of substantial out-of-distribution (OOD) samples, mirroring the complexities of real-world scenarios. 
 
 
-## 📻 Overview
+## 🎨 Overview
 
 <div align="center">
   <img width="700" src="resources/ossod.png"/>
 </div>
 
-Overview of the proposed open-set semi-supervised object detection (OSSOD) framework. 
+Overview of the proposed open-set semi-supersvised object detection (OSSOD) framework. 
 
 
 ## 🎮 Getting Started
