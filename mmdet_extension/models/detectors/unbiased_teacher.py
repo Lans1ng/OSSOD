@@ -69,7 +69,6 @@ class UnbiasedTeacher(SemiTwoStageDetector):
         self.cur_iter += 1
         self.analysis()
         # # ---------------------label data---------------------
-        #先利用labeled image去训练student
         losses = self.forward_train(img, img_metas, gt_bboxes, gt_labels)
         losses = self.parse_loss(losses)
         # # -------------------unlabeled data-------------------
