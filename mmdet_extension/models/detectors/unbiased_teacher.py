@@ -76,24 +76,19 @@ class UnbiasedTeacher(SemiTwoStageDetector):
         bbox_transform = []
         for img_meta in img_metas_unlabeled_1:
             bbox_transform.append(img_meta.pop('bbox_transform'))
-        #利用ema model(Teacher)去做unlabled data的inference
         bbox_results = self.inference_unlabeled(
             img_unlabeled, img_metas_unlabeled, rescale=True
         )
-        #然后经过一系列变换生成伪标签。
         gt_bboxes_pred, gt_labels_pred = self.create_pseudo_results(
             img_unlabeled_1, bbox_results, bbox_transform, device,
             gt_bboxes_unlabeled, gt_labels_unlabeled, img_metas_unlabeled  # for analysis
         )
 
-#         if self.debug:
-#             self.visual_offline(img_unlabeled_1, gt_bboxes_pred, gt_labels_pred, img_metas_unlabeled_1)
         if self.debug:
             self.visual_offline(img_unlabeled_1, 
                                 gt_bboxes_pred, 
                                 gt_labels_pred, 
                                 img_metas_unlabeled_1)  
-        #用这些伪标签去监督student模型的学习
         losses_unlabeled = self.forward_train(img_unlabeled_1, img_metas_unlabeled_1,
                                               gt_bboxes_pred, gt_labels_pred)
         losses_unlabeled = self.parse_loss(losses_unlabeled)
@@ -105,8 +100,6 @@ class UnbiasedTeacher(SemiTwoStageDetector):
             else:
                 losses_unlabeled[key] = self.weight_u * val
         losses.update({f'{key}_unlabeled': val for key, val in losses_unlabeled.items()})
-        #pseduo_num平均一张图中的pseudo label的数量
-        #pseudo_num(acc)，TP占所有pseudo label的比例
         extra_info = {
             'pseudo_num': torch.Tensor([self.pseudo_num.sum() / self.image_num]).to(device),
             'pseudo_num(acc)': torch.Tensor([self.pseudo_num_tp.sum() / self.pseudo_num.sum()]).to(device)
@@ -167,35 +160,26 @@ class UnbiasedTeacher(SemiTwoStageDetector):
         for id in img_id:
 
             c,h,w = img[id].shape
-#             print(h,w)
             vis_ori_image = True
             if vis_ori_image:
                 boxes, labels = boxes_list[id], labels_list[id]
                 device = boxes.device
-                scale_factor = torch.from_numpy(img_metas[id]['scale_factor']).to(device)#tensor([1.1975, 1.1975, 1.1975, 1.1975], device='cuda:0')
+                scale_factor = torch.from_numpy(img_metas[id]['scale_factor']).to(device)
                 filename = img_metas[id]['filename']
                 img_np = mmcv.imread(filename)
-#                 print('ori_image_shape',img_np.shape)#(800, 800, 3)
-#                 img_np = mmcv.imresize(img_np, (h,w))  # Reshape to img_np size
                 if img_metas[id]['flip']:
                     img_np = mmcv.imflip(img_np, direction=img_metas[id]['flip_direction'])
                 img_np = np.ascontiguousarray(img_np)
-#                 print(type(boxes))
-#                 print(type(scale_factor),scale_factor)
                 boxes = boxes / scale_factor 
                 
             else:
                 img_np = img[id].permute(1, 2, 0).cpu().numpy()
                 img_np = mmcv.imdenormalize(img_np, **img_norm_cfg)
                 boxes, labels = boxes_list[id], labels_list[id]
-#             feats_score, confidence_score = gt_feats_score[id], gt_confidence_score[id]
             for i, (box, label) in enumerate(zip(boxes, labels)):
                 x1, y1, x2, y2 = np.ascontiguousarray([int(a.cpu().item()) for a in box])
-#                 print(x1, y1, x2, y2)
                 img_np = cv2.rectangle(img_np, (x1, y1), (x2, y2), (157, 80, 136), 2)
                 label_text = self.CLASSES[label]
-#                 print('self.CLASSES',self.CLASSES)
-#                 print(label)
                 label_size, _ = cv2.getTextSize(label_text, cv2.FONT_HERSHEY_SIMPLEX, 0.9, 2)
                 img_np = cv2.rectangle(img_np, (x1, y1), (x2, y2), (157, 80, 136), 2)
                 cv2.putText(img_np, label_text, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 255, 255), 2)
