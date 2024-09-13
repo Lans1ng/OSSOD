@@ -47,7 +47,6 @@ class OSSODCocoDataset(CocoDataset):
             dict: Testing data after pipeline with new keys introduced by \
                 pipeline.
         """
-        print(self.data_infos)
         img_info = self.data_infos[idx]
         ann_info = self.get_ann_info(idx)
         results = dict(img_info=img_info, ann_info=ann_info)

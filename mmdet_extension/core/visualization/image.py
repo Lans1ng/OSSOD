@@ -141,7 +141,6 @@ def draw_labels(ax,
         if scores is not None:
             label_text += f'|{scores[i]:.02f}'
 #         text_color = color[i] if isinstance(color, list) else color
-        #标签的显示设置成白色，即w
         text_color = 'w'
 
         font_size_mask = font_size if scales is None else font_size * scales[i]
@@ -291,12 +290,6 @@ def imshow_det_bboxes(img,
     plt.subplots_adjust(left=0, right=1, bottom=0, top=1)
     ax = plt.gca()
     ax.axis('off')
-    #-----------------自己定义palette-----------------------
-    # palette = [(106, 0, 228), (119, 11, 32), (165, 42, 42), (0, 0, 192),
-    #            (197, 226, 255), (0, 60, 100), (0, 0, 142), (255, 77, 255),
-    #            (153, 69, 1), (120, 166, 157), (0, 182, 199), (0, 226, 252),
-    #            (182, 182, 255), (0, 0, 230), (220, 20, 60), (163, 255, 0),
-    #            (0, 82, 0), (3, 95, 161), (0, 80, 100), (183, 130, 88)]
 
     #browse data split1
     # palette = [(255, 0, 0), (255, 0, 0), (255, 0, 0), (255, 0, 0),
@@ -339,10 +332,6 @@ def imshow_det_bboxes(img,
         areas = (bboxes[:, 3] - bboxes[:, 1]) * (bboxes[:, 2] - bboxes[:, 0])
         scales = _get_adaptive_scales(areas)
         scores = None
-#         scores = bboxes[:, 4] if bboxes.shape[1] == 5 else None
-        #如果是NWPUv2数据集的测试，把class_names改成如下形式
-#         class_names = ('airplane', 'baseball diamond', 'basketball court', 'bridge', 'ground track field', 'harbor', 'ship', 'storage tank', 'tennis court', 'vehicle')
-#         print(class_names)
         draw_labels(
             ax,
             labels[:num_bboxes],

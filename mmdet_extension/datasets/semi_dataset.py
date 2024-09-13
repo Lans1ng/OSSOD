@@ -50,15 +50,6 @@ class SemiDataset(Dataset):
 
         self.flag = self.coco_unlabeled.flag  # not used
 
-#     def get_data_cls(self, ann_file):
-# #         print(ann_file)
-#         if ann_file.endswith('.json'):
-#             return CocoDataset
-#         elif ann_file.endswith('.txt'):
-#             return TXTDataset
-#         else:
-#             raise ValueError(f'please use json or text format annotations')
-
     def __len__(self):
         return len(self.coco_unlabeled)
 
