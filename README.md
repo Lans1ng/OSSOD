@@ -102,7 +102,7 @@ python train.py --config configs/baseline/baseline_ssod_split1.py --work-dir wor
 ### 5. Testing
 Take split1 of the DIOR dataset as examples:
 ```bash
-python eval.py --config configs/unbiased_teacher/split1/unbiased_teacher_ossod_id_mix_ood.py --checkpoint work_dirs/split1/unbiased_teacher_ossod_ID_MIX_OODlatest.pth --eval mAP  --show-dir results
+python eval.py --config configs/unbiased_teacher/split1/unbiased_teacher_ossod_id_mix_ood.py --checkpoint work_dirs/split1/unbiased_teacher_ossod_ID_MIX_OODlatest.pth --eval bbox  --show-dir results
 ```
 
 <!-- 
